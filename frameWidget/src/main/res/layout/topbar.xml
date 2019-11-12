@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mRelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="48dip"
+    android:background="#fff">
+
+    <RelativeLayout
+        android:id="@+id/mRelativeLayout_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/mLinearLayout_back"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/btn_left"
+                style="@style/text_style_15_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:gravity="center"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/mTextView_left"
+                style="@style/text_style_13_white"
+                android:layout_width="@dimen/j40dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/text_style_17_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawablePadding="@dimen/j5dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/mImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/mTextView_right_2"
+            style="@style/text_style_13_white"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/btn_right"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:paddingLeft="@dimen/j10dp"
+            android:paddingRight="@dimen/j10dp"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/btn_right_2"
+            android:layout_width="45dip"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/btn_right"
+            android:background="?android:attr/selectableItemBackground"
+            android:paddingLeft="@dimen/j10dp"
+            android:paddingRight="@dimen/j10dp"
+            android:scaleType="fitCenter"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/btn_right"
+            style="@style/text_style_15_white"
+            android:layout_width="45dip"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:paddingLeft="@dimen/j10dp"
+            android:paddingRight="@dimen/j10dp"
+            android:scaleType="fitCenter"
+            android:transitionName="myButton1"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/mTextView_right"
+            style="@style/text_style_13_white"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:paddingLeft="@dimen/j10dp"
+            android:paddingRight="@dimen/j10dp"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/mRelativeLayout_2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="30dip"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/j5dp"
+            android:background="@drawable/shape_gray"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/mTextView_cancel"
+                style="@style/text_style_13_black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="取消" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/mTextView_title"
+            style="@style/text_style_17_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true" />
+
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="30dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/j5dp"
+            android:background="@drawable/shape_gray"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/mTextView_all"
+                style="@style/text_style_13_black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="全选" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
+

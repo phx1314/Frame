@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="j30dp">30.0dp</dimen>
+    <dimen name="j10dp">10.0dp</dimen>
+    <dimen name="j50dp">50.0dp</dimen>
+    <dimen name="j12dp">12.0dp</dimen>
+    <dimen name="j17dp">17.0dp</dimen>
+    <dimen name="j320dp">320.0dp</dimen>
+    <dimen name="j200dp">200.0dp</dimen>
+    <dimen name="j40dp">40.0dp</dimen>
+    <dimen name="j60dp">60.0dp</dimen>
+    <dimen name="j1dp">1.0dp</dimen>
+    <dimen name="j100dp">100.0dp</dimen>
+    <dimen name="j5dp">5.0dp</dimen>
+    <dimen name="j500dp">500.0dp</dimen>
+    <dimen name="j44dp">44.0dp</dimen>
+    <dimen name="j8dp">8.0dp</dimen>
+    <dimen name="j3dp">3.0dp</dimen>
+    <dimen name="j2dp">2.0dp</dimen>
+    <dimen name="j11dp">11.0dp</dimen>
+
+</resources>

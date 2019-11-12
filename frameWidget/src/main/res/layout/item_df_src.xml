@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/default_linerlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <com.framework.widget.MImageView
+        android:id="@+id/mMImageView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:scaleType="centerCrop" />
+
+    <com.framework.widget.MImageView
+        android:id="@+id/mMImageView_add"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/df_add"
+        android:visibility="gone" />
+</LinearLayout>
+
