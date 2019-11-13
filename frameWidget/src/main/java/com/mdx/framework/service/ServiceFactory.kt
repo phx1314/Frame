@@ -19,17 +19,6 @@ import java.util.concurrent.TimeUnit
 
 fun <T> gB(clazz: Class<T>, baseUrl: String): T = ServiceFactory.createRxRetrofitService(clazz, baseUrl)
 
-fun Observable<HttpResult<Any>>.l(s: S<Any>) {
-    if (!isNetworkAvailable(Frame.CONTEXT)) {
-        Helper.toast("无可用网络，请检查网络连接")
-    }
-    this.subscribeOn(Schedulers.newThread())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { if (s.isShow) s.mProgressDialog.show() }
-            .doFinally { if (s.mProgressDialog.isShowing) s.mProgressDialog.dismiss() }
-            .subscribe(s)
-}
-
 class ServiceFactory {
     companion object {
         private const val DEFAULT_TIMEOUT: Long = 30
@@ -37,17 +26,19 @@ class ServiceFactory {
 
         private fun getOkHttpClient(): OkHttpClient {
             val loggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
-                Timber.d(it);
+                Timber.d(it)
             })
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
-            return OkHttpClient.Builder().addInterceptor {
-                val request = it.request().newBuilder()
-                        .addHeader("accept", "*/*")
-//                        .addHeader("Authorization", Api.mToken)
-                        .addHeader("X-Accept-Locale", "zh_CN")
-                        .build()
-                it.proceed(request)
-            }.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).addNetworkInterceptor(loggingInterceptor).build()
+            return OkHttpClient.Builder()
+//                    .addInterceptor {
+//                val request = it.request().newBuilder()
+//                        .addHeader("accept", "*/*")
+////                        .addHeader("Authorization", Api.mToken)
+//                        .addHeader("X-Accept-Locale", "zh_CN")
+//                        .build()
+//                it.proceed(request)
+//            }
+                    .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).addInterceptor(loggingInterceptor).build()
         }
 
         fun <T> createRxRetrofitService(clazz: Class<T>, endPoint: String): T {

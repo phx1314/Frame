@@ -4,12 +4,13 @@ import android.app.ProgressDialog
 import android.util.Log
 import com.mdx.framework.service.exception.HttpResultException
 import io.reactivex.observers.DisposableObserver
+import timber.log.Timber
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.util.concurrent.TimeoutException
 
 
-abstract class S<Any>(var l: HttpResultSubscriberListener, var mProgressDialog: ProgressDialog , var method: String, var isShow: Boolean) : DisposableObserver<HttpResult<Any>>() {
+abstract class S<T>(var l: HttpResultSubscriberListener, var mProgressDialog: ProgressDialog, var method: String, var isShow: Boolean) : DisposableObserver<HttpResult<T>>() {
 
 
     override fun onComplete() {
@@ -32,13 +33,13 @@ abstract class S<Any>(var l: HttpResultSubscriberListener, var mProgressDialog: 
         e.printStackTrace()
         Log.e("tag", "Request to enter the onError of HttpResultSubscriber , status is $code , msg is $msg")
         l.onError(code.toString(), msg)
-        onComplete()
-
     }
 
-    override fun onNext(httpResult: HttpResult<Any>) {
-        httpResult.takeIf { it.isSuccess }.also {
-            l.onSuccess(httpResult.data, method)
-        } ?: l.onError(httpResult.code, "")
+    override fun onNext(httpResult: HttpResult<T>) {
+        Timber.d(httpResult.toString())
+//        httpResult.takeIf { it.isSuccess }.also {
+//            l.onSuccess(httpResult.data, method)
+//        } ?: l.onError(httpResult.code, "")
+        l.onSuccess(httpResult.data, method)
     }
 }
