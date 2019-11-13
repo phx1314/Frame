@@ -56,10 +56,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import rx.Observable;
-import rx.Subscriber;
-import rx.functions.Action1;
-
 
 public class F {
     public static String WEIXINKEY = null, APPNAME = null, WEIXINID = null,
@@ -368,7 +364,6 @@ public class F {
         }
         return 0;
     }
-
 
 
     public static String go2Wei(Double f) {

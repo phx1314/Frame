@@ -1,22 +1,19 @@
 package com.mdx.framework.service.subscriber
 
-import android.app.Activity
 import android.app.ProgressDialog
-import android.content.Context
 import android.util.Log
-import com.mdx.framework.service.entity.HttpResultEntity
 import com.mdx.framework.service.exception.HttpResultException
-import com.mdx.framework.util.Frame
-import rx.Subscriber
+import io.reactivex.observers.DisposableObserver
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.util.concurrent.TimeoutException
 
-abstract class HttpResultSubscriber(var l: HttpResultSubscriberListener, var method: String) : Subscriber<HttpResultEntity>() {
+
+abstract class S<Any>(var l: HttpResultSubscriberListener, var mProgressDialog: ProgressDialog , var method: String, var isShow: Boolean) : DisposableObserver<HttpResult<Any>>() {
 
 
-    override fun onCompleted() {
-
+    override fun onComplete() {
+        Log.d("tag", " --> onCompleted")
     }
 
     override fun onError(e: Throwable) {
@@ -34,14 +31,14 @@ abstract class HttpResultSubscriber(var l: HttpResultSubscriberListener, var met
         }
         e.printStackTrace()
         Log.e("tag", "Request to enter the onError of HttpResultSubscriber , status is $code , msg is $msg")
-        l.onError(code, msg)
-        onCompleted()
+        l.onError(code.toString(), msg)
+        onComplete()
 
     }
 
-    override fun onNext(httpResult: HttpResultEntity) {
-        httpResult.takeIf { it.isSuccess }?.also {
+    override fun onNext(httpResult: HttpResult<Any>) {
+        httpResult.takeIf { it.isSuccess }.also {
             l.onSuccess(httpResult.data, method)
-        } ?: l.onError(httpResult.errorCode, "")
+        } ?: l.onError(httpResult.code, "")
     }
 }

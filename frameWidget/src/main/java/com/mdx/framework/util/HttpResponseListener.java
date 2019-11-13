@@ -57,7 +57,7 @@ public class HttpResponseListener extends StringCallback {
                 Object json = new JSONTokener(content).nextValue();
                 if (json instanceof JSONObject) {
                     JSONObject mJSONObject = new JSONObject(content);
-                    if (mJSONObject.has("Result") && !mJSONObject.getBoolean("Result")) {
+                    if (mJSONObject.has("HttpResult") && !mJSONObject.getBoolean("HttpResult")) {
                         Helper.toast(mJSONObject.getString("Message") );
                         return;
                     }
