@@ -17,6 +17,7 @@ import android.view.MenuItem;
 
 
 import com.framework.R;
+import com.mdx.framework.permissions.PermissionsHelper;
 import com.mdx.framework.util.Frame;
 import com.mdx.framework.view.Headlayout;
 
@@ -68,7 +69,10 @@ public abstract class BaseActivity extends FragmentActivity {
         Frame.setNowShowActivity(this);
         init();
     }
-
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PermissionsHelper.onRequestPermissions(requestCode, permissions, grantResults);
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

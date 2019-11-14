@@ -10,7 +10,7 @@ import java.net.SocketTimeoutException
 import java.util.concurrent.TimeoutException
 
 
-abstract class S<T>(var l: HttpResultSubscriberListener, var mProgressDialog: ProgressDialog, var method: String, var isShow: Boolean) : DisposableObserver<HttpResult<T>>() {
+class S<T>(var l: HttpResultSubscriberListener, var mProgressDialog: ProgressDialog, var method: String, var isShow: Boolean) : DisposableObserver<HttpResult<T>>() {
 
 
     override fun onComplete() {
