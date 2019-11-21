@@ -4,11 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <com.mdx.framework.view.Headlayout
-        android:id="@+id/mHeadlayout"
+    <LinearLayout
+        android:id="@+id/mActionBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="48dip"
+        android:orientation="vertical"></LinearLayout>
+
 
     <FrameLayout
         android:id="@+id/defautlt_container"

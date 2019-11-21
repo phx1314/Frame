@@ -14,6 +14,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 
 
 import com.framework.R;
@@ -27,7 +28,7 @@ import java.util.List;
 
 public abstract class BaseActivity extends FragmentActivity {
     public Fragment mFragment;
-    public Headlayout mHeadlayout;
+    public LinearLayout mActionBar;
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         FragmentManager fm = this.getSupportFragmentManager();
@@ -65,14 +66,16 @@ public abstract class BaseActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.create(savedInstanceState);
-        this.mHeadlayout = this.findViewById(R.id.mHeadlayout);
+        this.mActionBar = this.findViewById(R.id.mActionBar);
         Frame.setNowShowActivity(this);
         init();
     }
+
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         PermissionsHelper.onRequestPermissions(requestCode, permissions, grantResults);
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -91,7 +94,7 @@ public abstract class BaseActivity extends FragmentActivity {
             Class cls = Class.forName(classname);
             Object e = cls.newInstance();
             if (e instanceof MFragment) {
-                ((MFragment) e).setActionBar(mHeadlayout);
+                ((MFragment) e).setActionBar(mActionBar);
                 this.showFragment((MFragment) e);
             }
         } catch (Exception var6) {

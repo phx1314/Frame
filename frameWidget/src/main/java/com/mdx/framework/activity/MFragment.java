@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.LinearLayout;
 
 
 import com.mdx.framework.handle.MHandler;
@@ -81,7 +82,7 @@ public abstract class MFragment extends Fragment {
         this.initcreate(savedInstanceState);
     }
 
-    public void setActionBar(Headlayout mHeadlayout) {
+    public void setActionBar(LinearLayout mActionBar) {
     }
 
 
