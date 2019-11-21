@@ -16,6 +16,7 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.framework.R;
 import com.mdx.framework.util.Frame;
@@ -80,9 +81,12 @@ public class FrgPubBianJi extends BaseFrg {
     @Override
     public void onClick(View arg0) {
     }
-
     @Override
-    public void setActionBar(Headlayout mHeadlayout) {
+    public void setActionBar(LinearLayout actionBar) {
+        Headlayout mHeadlayout = new Headlayout(getContext());
+        mHeadlayout.setLeftBackground(R.drawable.arrows_left);
+        mHeadlayout.setGoBack();
+        actionBar.addView(mHeadlayout);
         mHeadlayout.setRText("保存");
         mHeadlayout.setTitle(hint);
         mHeadlayout.setRightOnclicker(new View.OnClickListener() {

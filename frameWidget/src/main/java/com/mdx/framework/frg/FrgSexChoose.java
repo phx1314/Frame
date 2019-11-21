@@ -5,7 +5,7 @@
 //  Copyright (c) Administrator All rights reserved.
 
 /**
-
+ *
  */
 
 package com.mdx.framework.frg;
@@ -15,10 +15,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.framework.R;
 import com.mdx.framework.util.Frame;
+import com.mdx.framework.util.Helper;
 import com.mdx.framework.view.Headlayout;
 
 import java.util.ArrayList;
@@ -68,8 +70,13 @@ public class FrgSexChoose extends BaseFrg {
     }
 
     @Override
-    public void setActionBar(Headlayout mHeadlayout) {
+    public void setActionBar(LinearLayout actionBar) {
+        Headlayout mHeadlayout = new Headlayout(getContext());
+        mHeadlayout.setLeftBackground(R.drawable.arrows_left);
+        mHeadlayout.setGoBack();
         mHeadlayout.setTitle("性别选择");
+        actionBar.addView(mHeadlayout);
     }
+
 
 }

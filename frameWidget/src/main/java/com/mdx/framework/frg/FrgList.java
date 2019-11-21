@@ -5,7 +5,7 @@
 //  Copyright (c) Administrator All rights reserved.
 
 /**
-
+ *
  */
 
 package com.mdx.framework.frg;
@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.framework.R;
@@ -25,7 +26,7 @@ import com.mdx.framework.view.Headlayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FrgList extends  BaseFrg {
+public class FrgList extends BaseFrg {
 
     public ListView mMPageListView;
     public String from;
@@ -68,7 +69,11 @@ public class FrgList extends  BaseFrg {
 
 
     @Override
-    public void setActionBar(Headlayout mHeadlayout) {
+    public void setActionBar(LinearLayout actionBar) {
+        Headlayout mHeadlayout = new Headlayout(getContext());
+        mHeadlayout.setLeftBackground(R.drawable.arrows_left);
+        mHeadlayout.setGoBack();
+        actionBar.addView(mHeadlayout);
         mHeadlayout.setTitle(title);
     }
 }
