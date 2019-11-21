@@ -25,12 +25,9 @@ public class HttpUtil {
                 return;
             }
             if (!isNetworkAvailable(context)) {
-                Helper.toast("无可用网络，请检查网络连接" );
+                Helper.toast("无可用网络，请检查网络连接");
                 return;
             }
-
-
-
             PostFormBuilder mPostFormBuilder = OkHttpUtils
                     .post();
             String url;
@@ -70,17 +67,17 @@ public class HttpUtil {
         }
 
     }
+
     public static void loadGet(Context context, Object tag,
-                            String methodName, Callback mCallback, Object... mparams) {
+                               String methodName, Callback mCallback, Object... mparams) {
         try {
             if (context == null) {
                 return;
             }
             if (!isNetworkAvailable(context)) {
-                Helper.toast("无可用网络，请检查网络连接" );
+                Helper.toast("无可用网络，请检查网络连接");
                 return;
             }
-
 
 
             GetBuilder mPostFormBuilder = OkHttpUtils
@@ -123,37 +120,40 @@ public class HttpUtil {
 
     }
 
-    public static void load(Context context, Object tag,
+    public static void load(Context context, String type, Object tag,
                             String methodName, Callback mCallback, Object obj) {
         try {
             if (context == null) {
                 return;
             }
             if (!isNetworkAvailable(context)) {
-                Helper.toast("无可用网络，请检查网络连接" );
+                Helper.toast("无可用网络，请检查网络连接");
                 return;
             }
-            String url;
-            if (methodName.startsWith("http:")) {
-                url = methodName;
+
+            Log.i("i", methodName + " 参数:" + new Gson().toJson(obj));
+            if (type.equals("POST")) {
+                OkHttpUtils
+                        .postString()
+                        .url(methodName).tag(tag)
+                        .content(new Gson().toJson(obj))
+                        .mediaType(MediaType.parse("application/json"))
+                        .build()
+                        .execute(mCallback);
             } else {
-                url = "/" + methodName;
+                OkHttpUtils
+                        .get()
+                        .url(methodName).tag(tag)
+                        .build()
+                        .execute(mCallback);
             }
-            Log.i("i", url + " 参数:" + new Gson().toJson(obj));
-            OkHttpUtils
-                    .postString()
-                    .url(url).tag(tag)
-                    .content(new Gson().toJson(obj))
-                    .mediaType(MediaType.parse("application/json"))
-                    .build()
-                    .execute(mCallback);
+
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
-
 
 
 }
