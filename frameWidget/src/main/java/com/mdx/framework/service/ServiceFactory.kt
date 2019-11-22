@@ -17,47 +17,51 @@ import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 
-fun <T> gB(clazz: Class<T>, baseUrl: String): T = ServiceFactory.createRxRetrofitService(clazz, baseUrl)
+fun <T> gB(clazz: Class<T>, baseUrl: String, token: String?): T =
+    ServiceFactory.createRxRetrofitService(clazz, baseUrl, token)
 
 class ServiceFactory {
     companion object {
         private const val DEFAULT_TIMEOUT: Long = 30
 
 
-        private fun getOkHttpClient(): OkHttpClient {
+        private fun getOkHttpClient(token: String?): OkHttpClient {
             val loggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
                 Timber.d(it)
             })
-            loggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
+            loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             return OkHttpClient.Builder()
-//                    .addInterceptor {
-//                val request = it.request().newBuilder()
+                .addInterceptor {
+                    val request = it.request().newBuilder()
 //                        .addHeader("accept", "*/*")
-////                        .addHeader("Authorization", Api.mToken)
-//                        .addHeader("X-Accept-Locale", "zh_CN")
-//                        .build()
-//                it.proceed(request)
-//            }
-                    .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).addInterceptor(loggingInterceptor).build()
+//                        .addHeader("Authorization", Api.mToken)
+                        .addHeader("token", token ?: "")
+                        .build()
+                    it.proceed(request)
+                }
+                .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+                .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+                .writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).addInterceptor(loggingInterceptor)
+                .build()
         }
 
-        fun <T> createRxRetrofitService(clazz: Class<T>, endPoint: String): T {
+        fun <T> createRxRetrofitService(clazz: Class<T>, endPoint: String, token: String?): T {
             val retrofit = Retrofit.Builder()
-                    .baseUrl(endPoint)
-                    .client(getOkHttpClient())
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
+                .baseUrl(endPoint)
+                .client(getOkHttpClient(token))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
             return retrofit.create(clazz)
         }
 
         fun <T> createRetrofitService(clazz: Class<T>, endPoint: String): T {
             return Retrofit
-                    .Builder()
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl(endPoint)
-                    .build()
-                    .create(clazz)
+                .Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(endPoint)
+                .build()
+                .create(clazz)
 
         }
 
