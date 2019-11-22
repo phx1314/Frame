@@ -110,10 +110,10 @@ public abstract class MFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initV();
+        initV(view);
     }
 
-    public void initV() {
+    public void initV(View view) {
     }
 
     public View findViewById(int id) {
