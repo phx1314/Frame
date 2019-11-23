@@ -1,13 +1,5 @@
 package com.mdx.framework.service
 
-import com.mdx.framework.service.subscriber.HttpResult
-import com.mdx.framework.service.subscriber.S
-import com.mdx.framework.util.AbAppUtil.isNetworkAvailable
-import com.mdx.framework.util.Frame
-import com.mdx.framework.util.Helper
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

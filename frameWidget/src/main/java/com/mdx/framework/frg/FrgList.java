@@ -19,8 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.framework.R;
+import com.mdx.framework.Frame;
 import com.mdx.framework.model.ModelDx;
-import com.mdx.framework.util.Frame;
 import com.mdx.framework.view.Headlayout;
 
 import java.util.ArrayList;

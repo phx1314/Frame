@@ -20,9 +20,8 @@ import android.view.ViewParent;
 import android.widget.LinearLayout;
 
 
+import com.mdx.framework.Frame;
 import com.mdx.framework.handle.MHandler;
-import com.mdx.framework.util.Frame;
-import com.mdx.framework.view.Headlayout;
 
 import java.util.ArrayList;
 import java.util.Iterator;

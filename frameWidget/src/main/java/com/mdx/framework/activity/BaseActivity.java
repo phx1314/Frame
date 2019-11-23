@@ -18,9 +18,8 @@ import android.widget.LinearLayout;
 
 
 import com.framework.R;
+import com.mdx.framework.Frame;
 import com.mdx.framework.permissions.PermissionsHelper;
-import com.mdx.framework.util.Frame;
-import com.mdx.framework.view.Headlayout;
 
 import java.lang.reflect.Method;
 import java.util.Iterator;
@@ -92,12 +91,21 @@ public abstract class BaseActivity extends FragmentActivity {
     private void initFrament(String classname) {
         try {
             Class cls = Class.forName(classname);
-            Object e = cls.newInstance();
+            final Object e = cls.newInstance();
             if (e instanceof MFragment) {
-                ((MFragment) e).setActionBar(mActionBar);
+                final MFragment obj = (MFragment)e;
+                obj.addOnFragmentCreateListener(new MFragment.OnFragmentCreateListener() {
+                    public void onFragmentCreateListener(MFragment mFragment) {
+                        obj.setActionBar(mActionBar);
+                    }
+                });
+
+
+
                 this.showFragment((MFragment) e);
             }
         } catch (Exception var6) {
+            var6.printStackTrace();
         }
 
     }

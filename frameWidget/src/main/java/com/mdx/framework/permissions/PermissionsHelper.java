@@ -9,7 +9,7 @@ import android.app.Activity;
 import android.os.Build.VERSION;
 import android.support.v4.content.ContextCompat;
 
-import com.mdx.framework.util.Frame;
+import com.mdx.framework.Frame;
 
 import java.util.ArrayList;
 import java.util.HashMap;

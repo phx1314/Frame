@@ -10,7 +10,6 @@
 
 package com.mdx.framework.frg;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -19,7 +18,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.framework.R;
-import com.mdx.framework.util.Frame;
+import com.mdx.framework.Frame;
 import com.mdx.framework.util.Helper;
 import com.mdx.framework.view.Headlayout;
 

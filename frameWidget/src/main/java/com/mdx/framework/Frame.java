@@ -1,4 +1,4 @@
-package com.mdx.framework.util;//
+package com.mdx.framework;//
 // Source code recreated from a .class file by IntelliJ IDEA
 // (powered by Fernflower decompiler)
 //
