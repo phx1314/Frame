@@ -99,9 +99,6 @@ public abstract class BaseActivity extends FragmentActivity {
                         obj.setActionBar(mActionBar);
                     }
                 });
-
-
-
                 this.showFragment((MFragment) e);
             }
         } catch (Exception var6) {

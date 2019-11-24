@@ -42,7 +42,6 @@ import com.mdx.framework.view.listener.AbOnListViewListener;
  */
 public class AbPullListView extends ListView implements HttpResponseListenerSon, AbsListView.OnScrollListener {
     Object tag;
-    Object json;
     /**
      * The m last y.
      */
@@ -145,6 +144,7 @@ public class AbPullListView extends ListView implements HttpResponseListenerSon,
     private int count = 0;
     private String method;
     private String type = "POST";
+    private String token = "";
     private Object[] mparams;
     public int PageSize = 20;
     public int PageIndex = 1;
@@ -437,7 +437,7 @@ public class AbPullListView extends ListView implements HttpResponseListenerSon,
 
     public void loadData(boolean isRefreash) {
         this.isRefreash = isRefreash;
-        HttpUtil.load(getContext(), type, tag, method, new HttpResponseListener(getContext(), this, method, false), json);
+        HttpUtil.load(getContext(), type, tag,token, method, new HttpResponseListener(getContext(), this, method, false), mparams);
     }
 
     public void reLoad() {
@@ -488,11 +488,11 @@ public class AbPullListView extends ListView implements HttpResponseListenerSon,
     }
 
 
-    public void setApiLoadParams(String method, String type, Object tag, Object json) {
+    public void setApiLoadParams(String method, String type, Object tag,String token,  Object... mparams) {
         this.method = method;
         this.type = type;
         this.tag = tag;
-        this.json = json;
+        this.token = token;
         this.mparams = mparams;
         if (mEnablePullRefresh) {
             pullLoad();

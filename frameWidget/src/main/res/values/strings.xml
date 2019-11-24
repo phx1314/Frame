@@ -4,4 +4,5 @@
     <integer name="viewfinder_border_width">4</integer>
     <integer name="viewfinder_border_length">60</integer>
     <string name="app_name"></string>
+    <string name="net_error"></string>
 </resources>

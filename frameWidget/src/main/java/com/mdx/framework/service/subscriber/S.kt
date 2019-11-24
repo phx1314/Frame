@@ -49,7 +49,11 @@ class S<T>(
     override fun onNext(httpResult: HttpResult<T>) {
         Timber.d(httpResult.toString())
         if (httpResult.code.equals("1111")) {
-            l.onSuccess(Gson().toJson(httpResult.data), method)
+            try {
+                l.onSuccess(Gson().toJson(httpResult.data), method)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         } else {
             Helper.toast(httpResult.msg)
         }
