@@ -62,7 +62,7 @@ public class HttpUtil {
                     i++;
                 }
             }
-            Log.i("i", methodName);
+            Log.i("i", methodName );
             mPostFormBuilder.build().execute(mCallback);
         } catch (Exception e) {
             e.printStackTrace();

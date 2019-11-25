@@ -437,7 +437,7 @@ public class AbPullListView extends ListView implements HttpResponseListenerSon,
 
     public void loadData(boolean isRefreash) {
         this.isRefreash = isRefreash;
-        HttpUtil.load(getContext(), type, tag,token, method, new HttpResponseListener(getContext(), this, method, false), mparams);
+        HttpUtil.load(getContext(), type, tag, token, method, new HttpResponseListener(getContext(), this, method, false)  , PageSize_key, PageSize + "", PageIndex_key, PageIndex + "",mparams);
     }
 
     public void reLoad() {
@@ -488,7 +488,7 @@ public class AbPullListView extends ListView implements HttpResponseListenerSon,
     }
 
 
-    public void setApiLoadParams(String method, String type, Object tag,String token,  Object... mparams) {
+    public void setApiLoadParams(String method, String type, Object tag, String token, Object... mparams) {
         this.method = method;
         this.type = type;
         this.tag = tag;

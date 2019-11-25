@@ -45,6 +45,7 @@ public class HttpResponseListener extends StringCallback {
 
     @Override
     public void onError(Request request, Exception e) {
+        e.printStackTrace();
         dismissProgressDialog();
     }
 
@@ -58,11 +59,11 @@ public class HttpResponseListener extends StringCallback {
                 if (json instanceof JSONObject) {
                     JSONObject mJSONObject = new JSONObject(content);
                     if (mJSONObject.has("HttpResult") && !mJSONObject.getBoolean("HttpResult")) {
-                        Helper.toast(mJSONObject.getString("Message") );
+                        Helper.toast(mJSONObject.getString("Message"));
                         return;
                     }
                     if (mJSONObject.has("stateMsg") && mJSONObject.getInt("stateType") != 0) {
-                        Helper.toast(mJSONObject.getString("stateMsg") );
+                        Helper.toast(mJSONObject.getString("stateMsg"));
                         return;
                     }
                 }
