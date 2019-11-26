@@ -9,4 +9,5 @@ public interface HttpResponseListenerSon {
 
 
     public void onSuccess(String methodName, String content);
+    public void onError(String methodName, String content);
 }

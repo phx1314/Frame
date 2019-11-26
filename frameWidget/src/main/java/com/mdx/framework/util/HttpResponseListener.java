@@ -46,6 +46,7 @@ public class HttpResponseListener extends StringCallback {
     @Override
     public void onError(Request request, Exception e) {
         e.printStackTrace();
+        mHttpResponseListenerSon.onError(methodName, e.toString());
         dismissProgressDialog();
     }
 
@@ -74,6 +75,7 @@ public class HttpResponseListener extends StringCallback {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            mHttpResponseListenerSon.onError(methodName, content);
 //            if (mHttpResponseListenerSon != null) {
 //                mHttpResponseListenerSon.onSuccess(methodName, content);
 //            }

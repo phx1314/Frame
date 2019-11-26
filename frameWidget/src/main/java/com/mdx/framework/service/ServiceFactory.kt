@@ -24,6 +24,7 @@ class ServiceFactory {
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             return OkHttpClient.Builder()
                 .addInterceptor {
+                    Timber.d(it.request().body.toString())
                     val request = it.request().newBuilder()
 //                        .addHeader("accept", "*/*")
 //                        .addHeader("Authorization", Api.mToken)
@@ -33,7 +34,8 @@ class ServiceFactory {
                 }
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
-                .writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).addInterceptor(loggingInterceptor)
+                .writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+                .addNetworkInterceptor(loggingInterceptor)
                 .build()
         }
 

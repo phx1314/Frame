@@ -146,7 +146,8 @@ public class AbPullListView extends ListView implements HttpResponseListenerSon,
     private String type = "POST";
     private String token = "";
     private Object[] mparams;
-    public int PageSize = 20;
+    public int PageSize = 10;
+    public int gridCount = -1;
     public int PageIndex = 1;
     public int pageIndex = 1;
     public String PageIndex_key = "page";
@@ -174,6 +175,10 @@ public class AbPullListView extends ListView implements HttpResponseListenerSon,
 
     public void setPageSize(int pageSize) {
         PageSize = pageSize;
+    }
+
+    public void setGridCount(int gridCount) {
+        this.gridCount = gridCount;
     }
 
     public void setPageIndex_key(String pageIndex_key) {
@@ -437,7 +442,7 @@ public class AbPullListView extends ListView implements HttpResponseListenerSon,
 
     public void loadData(boolean isRefreash) {
         this.isRefreash = isRefreash;
-        HttpUtil.load(getContext(), type, tag, token, method, new HttpResponseListener(getContext(), this, method, false)  , PageSize_key, PageSize + "", PageIndex_key, PageIndex + "",mparams);
+        HttpUtil.load(getContext(), type, tag, token, method, new HttpResponseListener(getContext(), this, method, false), PageSize_key, PageSize + "", PageIndex_key, PageIndex + "", mparams);
     }
 
     public void reLoad() {
@@ -473,7 +478,7 @@ public class AbPullListView extends ListView implements HttpResponseListenerSon,
             e.printStackTrace();
         }
         if (mMAdapter != null) {
-            if (mMAdapter.getCount() < PageSize) {
+            if ((gridCount != -1 ? gridCount * mMAdapter.getCount() : mMAdapter.getCount()) < PageSize) {
                 setPullLoadEnable(false);
             }
 //        stopLoadMore();
@@ -487,6 +492,10 @@ public class AbPullListView extends ListView implements HttpResponseListenerSon,
 
     }
 
+    @Override
+    public void onError(String methodName, String content) {
+        stopAll();
+    }
 
     public void setApiLoadParams(String method, String type, Object tag, String token, Object... mparams) {
         this.method = method;

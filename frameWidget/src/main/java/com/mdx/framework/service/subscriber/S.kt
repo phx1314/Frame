@@ -55,6 +55,7 @@ class S<T>(
                 e.printStackTrace()
             }
         } else {
+            l.onError(httpResult.code, httpResult.msg)
             Helper.toast(httpResult.msg)
         }
     }

@@ -15,6 +15,8 @@ import com.zhy.http.okhttp.builder.PostFormBuilder;
 import com.zhy.http.okhttp.callback.Callback;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.mdx.framework.util.AbAppUtil.isNetworkAvailable;
 
@@ -38,7 +40,7 @@ public class HttpUtil {
                 mPostFormBuilder = OkHttpUtils
                         .get().url(methodName).tag(tag).addHeader("token", token);
             }
-
+            Map<String, String> param_data = new HashMap<>();
             for (int i = 0; i < mparams.length; i++) {
                 if (mparams[i] instanceof Object[]) {
                     for (int j = 0; j < ((Object[]) mparams[i]).length; j++) {
@@ -47,6 +49,7 @@ public class HttpUtil {
                                 ((PostFormBuilder) mPostFormBuilder).addFile(((Object[]) mparams[i])[j].toString(), ((File) ((Object[]) mparams[i])[j + 1]).getName(), (File) ((Object[]) mparams[i])[j + 1]);
                             } else {
                                 mPostFormBuilder.addParams(((Object[]) mparams[i])[j].toString(), ((Object[]) mparams[i])[j + 1].toString());
+                                param_data.put(((Object[]) mparams[i])[j].toString(), ((Object[]) mparams[i])[j + 1].toString());
                             }
                         }
                         j++;
@@ -57,12 +60,13 @@ public class HttpUtil {
                             ((PostFormBuilder) mPostFormBuilder).addFile(mparams[i].toString(), ((File) mparams[i + 1]).getName(), (File) mparams[i + 1]);
                         } else {
                             mPostFormBuilder.addParams(mparams[i].toString(), mparams[i + 1].toString());
+                            param_data.put(mparams[i].toString(), mparams[i + 1].toString());
                         }
                     }
                     i++;
                 }
             }
-            Log.i("i", methodName );
+            Log.i("i", methodName +"参数"+ param_data.toString());
             mPostFormBuilder.build().execute(mCallback);
         } catch (Exception e) {
             e.printStackTrace();
