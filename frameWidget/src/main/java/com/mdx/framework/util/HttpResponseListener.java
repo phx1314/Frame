@@ -52,23 +52,8 @@ public class HttpResponseListener extends StringCallback {
 
     @Override
     public void onResponse(String content) {
-        Log.i("ok", content);
         try {
             dismissProgressDialog();
-            if (!TextUtils.isEmpty(content)) {
-                Object json = new JSONTokener(content).nextValue();
-                if (json instanceof JSONObject) {
-                    JSONObject mJSONObject = new JSONObject(content);
-                    if (mJSONObject.has("HttpResult") && !mJSONObject.getBoolean("HttpResult")) {
-                        Helper.toast(mJSONObject.getString("Message"));
-                        return;
-                    }
-                    if (mJSONObject.has("stateMsg") && mJSONObject.getInt("stateType") != 0) {
-                        Helper.toast(mJSONObject.getString("stateMsg"));
-                        return;
-                    }
-                }
-            }
             if (mHttpResponseListenerSon != null) {
                 mHttpResponseListenerSon.onSuccess(methodName, content);
 
