@@ -32,17 +32,15 @@ class S<T>(
             || e is TimeoutException
         ) {
             code = -9999
-            msg = "network anomaly"
+//            msg = "network anomaly"
 
         } else if (e is HttpResultException) {
             code = e.code
-            msg = e.msg
+//            msg = e.msg
         }
+        msg = "请求服务器失败"
         e.printStackTrace()
-        Log.e(
-            "tag",
-            "Request to enter the onError of HttpResultSubscriber , status is $code , msg is $msg"
-        )
+        Helper.toast(msg)
         l.onError(code.toString(), msg)
     }
 
