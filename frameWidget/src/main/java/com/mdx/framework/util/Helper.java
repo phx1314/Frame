@@ -23,6 +23,7 @@ import android.graphics.RectF;
 import android.os.IBinder;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -55,8 +56,13 @@ public class Helper {
     }
 
 
-    public static synchronized void toast(final CharSequence text ) {
-        Toast.makeText(Frame.CONTEXT, text, 1).show();
+    public static synchronized void toast(final CharSequence text) {
+//        Toast.makeText(Frame.CONTEXT, text, 1).show();
+        if (!TextUtils.isEmpty(text)) {
+            Toast toast = Toast.makeText(Frame.CONTEXT, "", Toast.LENGTH_SHORT);
+            toast.setText(text);
+            toast.show();
+        }
     }
 
     public int getActionbarHeight(Context context) {
