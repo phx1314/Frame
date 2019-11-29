@@ -66,6 +66,7 @@ public class Helper {
     }
 
     public int getActionbarHeight(Context context) {
+
         TypedValue tv = new TypedValue();
         if (context.getTheme().resolveAttribute(16843499, tv, true)) {
             int actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, context.getResources().getDisplayMetrics());
