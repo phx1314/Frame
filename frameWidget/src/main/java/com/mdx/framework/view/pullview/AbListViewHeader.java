@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2013 www.418log.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -32,8 +32,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.framework.R;
 import com.mdx.framework.util.AbDateUtil;
-import com.mdx.framework.util.AbFileUtil;
 import com.mdx.framework.util.AbViewUtil;
 
 import static com.mdx.framework.F.COLOR;
@@ -166,8 +166,7 @@ public class AbListViewHeader extends LinearLayout {
         FrameLayout headImage = new FrameLayout(context);
         arrowImageView = new ImageView(context);
         //从包里获取的箭头图片
-        arrowImage = AbFileUtil.getBitmapFromSrc("image/arrow.png");
-        arrowImageView.setImageBitmap(arrowImage);
+        arrowImageView.setImageResource(R.drawable.arrow_up);
 
         //style="?android:attr/progressBarStyleSmall" 默认的样式
         headerProgressBar = new ProgressBar(context, null, android.R.attr.progressBarStyle);
