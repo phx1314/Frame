@@ -9,15 +9,13 @@ import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 
-fun <T> gB(clazz: Class<T>, baseUrl: String, token: String?): T =
-    ServiceFactory.createRxRetrofitService(clazz, baseUrl, token)
+fun <T> gB(clazz: Class<T>, baseUrl: String, token: String?, TIME: Long  ): T =
+    ServiceFactory.createRxRetrofitService(clazz, baseUrl, token, TIME)
 
 class ServiceFactory {
     companion object {
-        private const val DEFAULT_TIMEOUT: Long = 30
 
-
-        private fun getOkHttpClient(token: String?): OkHttpClient {
+        private fun getOkHttpClient(token: String?, TIME: Long): OkHttpClient {
             val loggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
                 Timber.d(it)
             })
@@ -32,17 +30,22 @@ class ServiceFactory {
                         .build()
                     it.proceed(request)
                 }
-                .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
-                .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
-                .writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+                .connectTimeout(TIME, TimeUnit.SECONDS)
+                .readTimeout(TIME, TimeUnit.SECONDS)
+                .writeTimeout(TIME, TimeUnit.SECONDS)
                 .addNetworkInterceptor(loggingInterceptor)
                 .build()
         }
 
-        fun <T> createRxRetrofitService(clazz: Class<T>, endPoint: String, token: String?): T {
+        fun <T> createRxRetrofitService(
+            clazz: Class<T>,
+            endPoint: String,
+            token: String?,
+            TIME: Long
+        ): T {
             val retrofit = Retrofit.Builder()
                 .baseUrl(endPoint)
-                .client(getOkHttpClient(token))
+                .client(getOkHttpClient(token, TIME))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
