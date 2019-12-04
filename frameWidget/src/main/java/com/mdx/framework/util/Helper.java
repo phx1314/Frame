@@ -112,6 +112,9 @@ public class Helper {
         return str;
     }
 
+    public static DelayClickListener delayClickLitener(View.OnClickListener click) {
+        return new DelayClickListener(click);
+    }
 
     public static Bitmap rotaingImageView(int angle, Bitmap bitmap) {
         Matrix matrix = new Matrix();
