@@ -4,9 +4,9 @@ import android.app.ProgressDialog
 import android.util.Log
 import com.google.gson.Gson
 import com.mdx.framework.service.exception.HttpResultException
+import com.mdx.framework.util.AbLogUtil
 import com.mdx.framework.util.Helper
 import io.reactivex.observers.DisposableObserver
-import timber.log.Timber
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.util.concurrent.TimeoutException
@@ -39,13 +39,13 @@ class S<T>(
 //            msg = e.msg
         }
         msg = "请求服务器失败"
-        e.printStackTrace()
         Helper.toast(msg)
-        l.onError(code.toString(), msg, "", "")
+        e.printStackTrace()
+        l.onError(code.toString(), e.message, "", "")
     }
 
     override fun onNext(httpResult: HttpResult<T>) {
-        Timber.d(httpResult.toString())
+        AbLogUtil.d(httpResult.toString())
         if (httpResult.code.equals("1111")) {
             try {
                 l.onSuccess(Gson().toJson(httpResult.data), method)

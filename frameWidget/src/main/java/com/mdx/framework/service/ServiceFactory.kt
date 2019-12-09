@@ -1,11 +1,12 @@
 package com.mdx.framework.service
 
+import com.mdx.framework.util.AbDateUtil
+import com.mdx.framework.util.AbLogUtil
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 
@@ -17,12 +18,12 @@ class ServiceFactory {
 
         private fun getOkHttpClient(token: String?, TIME: Long): OkHttpClient {
             val loggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
-                Timber.d(it)
+                AbLogUtil.d(it)
             })
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             return OkHttpClient.Builder()
                 .addInterceptor {
-                    Timber.d(it.request().body.toString())
+                    AbLogUtil.d(it.request().body.toString())
                     val request = it.request().newBuilder()
 //                        .addHeader("accept", "*/*")
 //                        .addHeader("Authorization", Api.mToken)

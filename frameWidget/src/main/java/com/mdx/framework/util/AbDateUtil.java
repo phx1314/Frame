@@ -253,7 +253,7 @@ public class AbDateUtil {
      * @return String String类型的当前日期时间
      */
     public static String getCurrentDate(String format) {
-        AbLogUtil.d(AbDateUtil.class, "getCurrentDate:" + format);
+//        AbLogUtil.d(AbDateUtil.class, "getCurrentDate:" + format);
         String curDateTime = null;
         try {
             SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat(format);
