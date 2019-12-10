@@ -106,7 +106,7 @@ public class AbLogUtil {
      * @param args
      */
     public static void d(String format, Object... args) {
-        d("D", buildMessage(format, args));
+        d("D", format);
     }
 
     /**

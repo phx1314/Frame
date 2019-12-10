@@ -1,6 +1,5 @@
 package com.mdx.framework.service
 
-import com.mdx.framework.util.AbDateUtil
 import com.mdx.framework.util.AbLogUtil
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
