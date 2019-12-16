@@ -9,8 +9,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 
-fun <T> gB(clazz: Class<T>, baseUrl: String, token: String?, TIME: Long  ): T =
-    ServiceFactory.createRxRetrofitService(clazz, baseUrl, token, TIME)
+fun <T> gB(clazz: Class<T>, baseUrl: String, token: String?, TIME: Long): T =
+        ServiceFactory.createRxRetrofitService(clazz, baseUrl, token, TIME)
 
 class ServiceFactory {
     companion object {
@@ -21,44 +21,44 @@ class ServiceFactory {
             })
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             return OkHttpClient.Builder()
-                .addInterceptor {
-                    AbLogUtil.d(it.request().body.toString())
-                    val request = it.request().newBuilder()
+                    .addInterceptor {
+                        AbLogUtil.d(it.request().body.toString())
+                        val request = it.request().newBuilder()
 //                        .addHeader("accept", "*/*")
 //                        .addHeader("Authorization", Api.mToken)
-                        .addHeader("token", token ?: "")
-                        .build()
-                    it.proceed(request)
-                }
-                .connectTimeout(TIME, TimeUnit.SECONDS)
-                .readTimeout(TIME, TimeUnit.SECONDS)
-                .writeTimeout(TIME, TimeUnit.SECONDS)
-                .addNetworkInterceptor(loggingInterceptor)
-                .build()
+                                .addHeader("token", token ?: "")
+                                .build()
+                        it.proceed(request)
+                    }
+                    .connectTimeout(TIME, TimeUnit.SECONDS)
+                    .readTimeout(TIME, TimeUnit.SECONDS)
+                    .writeTimeout(TIME, TimeUnit.SECONDS)
+                    .addNetworkInterceptor(loggingInterceptor)
+                    .build()
         }
 
         fun <T> createRxRetrofitService(
-            clazz: Class<T>,
-            endPoint: String,
-            token: String?,
-            TIME: Long
+                clazz: Class<T>,
+                endPoint: String,
+                token: String?,
+                TIME: Long
         ): T {
             val retrofit = Retrofit.Builder()
-                .baseUrl(endPoint)
-                .client(getOkHttpClient(token, TIME))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+                    .baseUrl(endPoint)
+                    .client(getOkHttpClient(token, TIME))
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
             return retrofit.create(clazz)
         }
 
         fun <T> createRetrofitService(clazz: Class<T>, endPoint: String): T {
             return Retrofit
-                .Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(endPoint)
-                .build()
-                .create(clazz)
+                    .Builder()
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .baseUrl(endPoint)
+                    .build()
+                    .create(clazz)
 
         }
 
