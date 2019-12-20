@@ -4,8 +4,8 @@ import android.app.ProgressDialog
 import android.util.Log
 import com.google.gson.Gson
 import com.mdx.framework.service.exception.HttpResultException
-import com.mdx.framework.util.AbLogUtil
-import com.mdx.framework.util.Helper
+import com.mdx.framework.utility.AbLogUtil
+import com.mdx.framework.utility.Helper
 import io.reactivex.observers.DisposableObserver
 import java.net.ConnectException
 import java.net.SocketTimeoutException

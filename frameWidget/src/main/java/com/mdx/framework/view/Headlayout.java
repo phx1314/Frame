@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.framework.R;
 import com.mdx.framework.activity.BaseActivity;
-import com.mdx.framework.util.Helper;
+import com.mdx.framework.utility.Helper;
 
 import static com.mdx.framework.F.COLOR;
 

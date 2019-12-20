@@ -1,6 +1,6 @@
 package com.mdx.framework.service
 
-import com.mdx.framework.util.AbLogUtil
+import com.mdx.framework.utility.AbLogUtil
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

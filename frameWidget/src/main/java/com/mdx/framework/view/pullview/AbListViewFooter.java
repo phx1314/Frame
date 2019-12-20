@@ -27,7 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.mdx.framework.util.AbViewUtil;
+import com.mdx.framework.utility.AbViewUtil;
 
 import static com.mdx.framework.F.COLOR;
 

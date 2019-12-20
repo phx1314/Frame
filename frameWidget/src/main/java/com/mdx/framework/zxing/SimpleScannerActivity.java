@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.framework.R;
 import com.google.zxing.Result;
-import com.mdx.framework.util.Helper;
+import com.mdx.framework.utility.Helper;
 
 public class SimpleScannerActivity extends Activity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView mScannerView;

@@ -23,7 +23,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
-import com.mdx.framework.util.AbLogUtil;
+import com.mdx.framework.utility.AbLogUtil;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -7,8 +7,9 @@ package com.mdx.framework;//
 import android.app.Activity;
 import android.content.Context;
 
-import com.mdx.framework.handle.Handles;
-import com.mdx.framework.permissions.PermissionsHelper;
+
+import com.mdx.framework.utility.handle.Handles;
+import com.mdx.framework.utility.permissions.PermissionsHelper;
 
 import java.util.ArrayList;
 

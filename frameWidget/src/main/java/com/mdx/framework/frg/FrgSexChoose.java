@@ -20,7 +20,6 @@ import android.widget.ListView;
 
 import com.framework.R;
 import com.mdx.framework.Frame;
-import com.mdx.framework.util.Helper;
 import com.mdx.framework.view.Headlayout;
 
 import java.util.ArrayList;

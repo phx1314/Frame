@@ -19,7 +19,7 @@ import android.widget.LinearLayout;
 
 import com.framework.R;
 import com.mdx.framework.Frame;
-import com.mdx.framework.permissions.PermissionsHelper;
+import com.mdx.framework.utility.permissions.PermissionsHelper;
 
 import java.lang.reflect.Method;
 import java.util.Iterator;

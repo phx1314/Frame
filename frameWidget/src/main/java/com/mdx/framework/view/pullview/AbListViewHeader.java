@@ -33,8 +33,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.framework.R;
-import com.mdx.framework.util.AbDateUtil;
-import com.mdx.framework.util.AbViewUtil;
+import com.mdx.framework.utility.AbDateUtil;
+import com.mdx.framework.utility.AbViewUtil;
 
 import static com.mdx.framework.F.COLOR;
 

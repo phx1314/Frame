@@ -9,7 +9,6 @@ import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.os.Build;
 
 import android.support.v4.app.FragmentActivity;
 import android.view.Display;
@@ -24,7 +23,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mdx.framework.util.BitmapRead;
+import com.mdx.framework.utility.BitmapRead;
 import com.mdx.framework.view.CallBackOnly;
 import com.mdx.framework.view.CallBackPt;
 import com.mdx.framework.view.CallBackShareJieKou;

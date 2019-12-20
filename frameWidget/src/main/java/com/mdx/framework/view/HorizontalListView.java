@@ -7,7 +7,6 @@ package com.mdx.framework.view;//
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.database.DataSetObserver;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -33,7 +32,7 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.Scroller;
 
-import com.mdx.framework.util.Util;
+import com.mdx.framework.utility.Util;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
