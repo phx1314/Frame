@@ -14,7 +14,6 @@ fun <T> gB(clazz: Class<T>, baseUrl: String, token: String?, TIME: Long): T =
 
 class ServiceFactory {
     companion object {
-
         private fun getOkHttpClient(token: String?, TIME: Long): OkHttpClient {
             val loggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
                 AbLogUtil.d(it)
@@ -49,6 +48,7 @@ class ServiceFactory {
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
+
             return retrofit.create(clazz)
         }
 
