@@ -133,16 +133,16 @@ public class SlidingFragment extends MFragment implements ViewPager.OnPageChange
                 if (mtexts.containsKey(i)) {
                     mRadioButton.setText(mtexts.get(i));
                 }
-//                if (mres.containsKey(i)) {
-//                    mRadioButton.setCompoundDrawablesWithIntrinsicBounds(0,
-//                            mres.get(i), 0, 0);
-//                }
-                if (mres_drawable.containsKey(i)) {
-                    mres_drawable.get(i).setBounds(0, 0, mres_drawable.get(i).getIntrinsicWidth(), (int) (mres_drawable.get(i).getMinimumHeight()));
-                    mRadioButton.setCompoundDrawables(null,
-                            mres_drawable.get(i), null, null);
-                    mRadioButton.setTextColor(createColorStateList());
+                if (mres.containsKey(i)) {
+                    mRadioButton.setCompoundDrawablesWithIntrinsicBounds(0,
+                            mres.get(i), 0, 0);
                 }
+//                if (mres_drawable.containsKey(i)) {
+//                    mres_drawable.get(i).setBounds(0, 0, mres_drawable.get(i).getIntrinsicWidth(), (int) (mres_drawable.get(i).getMinimumHeight()));
+//                    mRadioButton.setCompoundDrawables(null,
+//                            mres_drawable.get(i), null, null);
+//                    mRadioButton.setTextColor(createColorStateList());
+//                }
 
                 if (mOnClickListeners.containsKey(i)) {
                     mRadioButton.setOnClickListener(mOnClickListeners.get(i));
