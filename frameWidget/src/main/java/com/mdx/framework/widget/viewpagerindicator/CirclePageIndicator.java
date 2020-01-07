@@ -26,12 +26,12 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.View.BaseSavedState;
 import android.view.View.MeasureSpec;
-import com.mdx.framework.R.attr;
-import com.mdx.framework.R.bool;
-import com.mdx.framework.R.color;
-import com.mdx.framework.R.dimen;
-import com.mdx.framework.R.integer;
-import com.mdx.framework.R.styleable;
+import com.framework.R.attr;
+import com.framework.R.bool;
+import com.framework.R.color;
+import com.framework.R.dimen;
+import com.framework.R.integer;
+import com.framework.R.styleable;
 import com.mdx.framework.widget.viewpagerindicator.PageIndicator;
 
 public class CirclePageIndicator extends View implements PageIndicator {
