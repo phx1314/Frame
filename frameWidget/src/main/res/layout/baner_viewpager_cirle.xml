@@ -21,7 +21,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <com.mdx.framework.widget.MViewPager
+    <com.mdx.framework.newMenu.DfMViewPager
         android:id="@+id/framework_banner_viewpager"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />

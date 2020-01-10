@@ -1,5 +1,6 @@
 package com.mdx.framework.service.subscriber
 
+import android.app.Dialog
 import android.app.ProgressDialog
 import android.util.Log
 import com.google.gson.Gson
@@ -14,7 +15,7 @@ import java.util.concurrent.TimeoutException
 
 class S<T>(
         var l: HttpResultSubscriberListener,
-        var mProgressDialog: ProgressDialog,
+        var mProgressDialog: Dialog,
         var method: String,
         var isShow: Boolean
 ) : DisposableObserver<HttpResult<T>>() {
