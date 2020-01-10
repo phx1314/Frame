@@ -23,10 +23,14 @@ import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.framework.R;
 import com.mdx.framework.Frame;
 import com.mdx.framework.utility.permissions.PermissionRequest;
 import com.mdx.framework.utility.permissions.PermissionsHelper;
@@ -55,14 +59,25 @@ public class Helper {
     }
 
 
-    public static synchronized void toast(final CharSequence text) {
-//        Toast.makeText(Frame.CONTEXT, text, 1).show();
-        if (!TextUtils.isEmpty(text)) {
-            Toast toast = Toast.makeText(Frame.CONTEXT, "", Toast.LENGTH_SHORT);
-            toast.setText(text);
+    public static synchronized void toast(final String message) {
+//        if (!TextUtils.isEmpty(text)) {
+//            Toast toast = Toast.makeText(Frame.CONTEXT, "", Toast.LENGTH_SHORT);
+//            toast.setText(text);
+//            toast.show();
+//        }
+
+        final Toast toast = new Toast(Frame.CONTEXT);
+        View contentView = LayoutInflater.from(Frame.CONTEXT).inflate(R.layout.toast_view, null);
+        TextView textView = contentView.findViewById(R.id.toastText);
+        if (!TextUtils.isEmpty(message)) {
+            textView.setText(message);
+            toast.setView(contentView);
+            toast.setDuration(Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
     }
+
 
     public int getActionbarHeight(Context context) {
 
