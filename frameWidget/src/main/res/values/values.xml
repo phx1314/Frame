@@ -4161,10 +4161,6 @@
     <dimen name="default_title_indicator_text_size">15dp</dimen>
     <dimen name="default_title_indicator_title_padding">5dp</dimen>
     <dimen name="default_title_indicator_top_padding">7dp</dimen>
-    <dimen name="j106dp">106.0dp</dimen>
-    <dimen name="j320dp">320.0dp</dimen>
-    <dimen name="j36dp">36.0dp</dimen>
-    <dimen name="j65dp">65.0dp</dimen>
     <dimen name="sp_circly_width">40px</dimen>
     <dimen name="sp_circlystrok">10px</dimen>
     <dimen name="sp_linestrok">10px</dimen>
