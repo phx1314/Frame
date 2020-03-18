@@ -9,8 +9,8 @@
         android:id="@+id/mMGridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:horizontalSpacing="@dimen/j5dp"
+        android:horizontalSpacing="5dp"
         android:numColumns="3"
-        android:verticalSpacing="@dimen/j5dp" />
+        android:verticalSpacing="5dp" />
 </RelativeLayout>
 

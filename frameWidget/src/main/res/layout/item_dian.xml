@@ -8,9 +8,9 @@
     <TextView
         android:id="@+id/mTextView_dian"
         style="@style/default_dian"
-        android:layout_width="@dimen/j10dp"
-        android:layout_height="@dimen/j10dp"
-        android:layout_marginRight="@dimen/j17dp"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginRight="17dp"
         android:visibility="invisible" />
 
 </LinearLayout>

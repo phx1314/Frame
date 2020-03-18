@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/j10dp"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/arrows_left" />
 
         <TextView
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/j10dp"
+            android:layout_marginRight="10dp"
             android:gravity="center"
             android:text="删除"
             android:textColor="#ffffff" />

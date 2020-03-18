@@ -6,8 +6,8 @@
     style="@style/text_style_15_black"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/j10dp"
+    android:layout_margin="10dp"
     android:gravity="center_vertical"
-    android:padding="@dimen/j10dp">
+    android:padding="10dp">
 
 </TextView>
