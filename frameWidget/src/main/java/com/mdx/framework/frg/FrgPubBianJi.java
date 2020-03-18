@@ -5,7 +5,7 @@
 //  Copyright (c) Administrator All rights reserved.
 
 /**
-
+ *
  */
 
 package com.mdx.framework.frg;
@@ -18,7 +18,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.framework.R;
+import com.mdx.framework.F;
 import com.mdx.framework.Frame;
+import com.mdx.framework.utility.AbAppUtil;
 import com.mdx.framework.utility.Helper;
 import com.mdx.framework.view.Headlayout;
 
@@ -64,7 +66,7 @@ public class FrgPubBianJi extends BaseFrg {
             mEditText.setMaxEms(max);
         }
         if (height != 0) {
-            mEditText.setMinHeight((int) getResources().getDimension(R.dimen.j100dp));
+            mEditText.setMinHeight(F.dp2px(Frame.CONTEXT,100f));
         }
         if (hint.equals("年龄")) {
             mEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -80,6 +82,7 @@ public class FrgPubBianJi extends BaseFrg {
     @Override
     public void onClick(View arg0) {
     }
+
     @Override
     public void setActionBar(LinearLayout actionBar) {
         Headlayout mHeadlayout = new Headlayout(getContext());
@@ -93,10 +96,10 @@ public class FrgPubBianJi extends BaseFrg {
             public void onClick(View v) {
                 if (max != 0
                         && mEditText.getText().toString().trim().length() > max) {
-                    Helper.toast("请输入小于等于" + max + "位字符" );
+                    Helper.toast("请输入小于等于" + max + "位字符");
                 } else if (hint.equals("体重") || hint.equals("身高")) {
                     if (mEditText.getText().toString().trim().equals(".")) {
-                        Helper.toast("输入内容格式错误" );
+                        Helper.toast("输入内容格式错误");
                     } else {
                         FrgPubBianJi.this.finish();
                         Frame.HANDLES.sentAll(from, EDT, mEditText.getText()

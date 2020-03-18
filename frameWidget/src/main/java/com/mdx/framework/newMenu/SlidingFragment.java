@@ -27,6 +27,8 @@ import android.widget.TextView;
 
 
 import com.framework.R;
+import com.mdx.framework.F;
+import com.mdx.framework.Frame;
 import com.mdx.framework.activity.MFragment;
 import com.mdx.framework.newMenu.DfRadioGroup.DfCallback;
 import com.mdx.framework.newMenu.SlidingMenu.OnCloseListener;
@@ -162,8 +164,8 @@ public class SlidingFragment extends MFragment implements ViewPager.OnPageChange
                             .setVisibility(View.VISIBLE);
                     if (!TextUtils.isEmpty(mDatas
                             .get(i))) {
-                        LinearLayout.LayoutParams mLayoutParam = new LinearLayout.LayoutParams((int) getResources().getDimension(R.dimen.j17dp), (int) getResources().getDimension(R.dimen.j17dp));
-                        mLayoutParam.setMargins(0, 0, (int) getResources().getDimension(R.dimen.j5dp), 0);
+                        LinearLayout.LayoutParams mLayoutParam = new LinearLayout.LayoutParams(F.dp2px(Frame.CONTEXT,17f), F.dp2px(Frame.CONTEXT,17f));
+                        mLayoutParam.setMargins(0, 0, F.dp2px(Frame.CONTEXT,5f), 0);
                         mLayoutParam.gravity = Gravity.CENTER;
                         ((TextView) mLinearLayout_son
                                 .findViewById(R.id.mTextView_dian)).setLayoutParams(mLayoutParam);
@@ -272,14 +274,14 @@ public class SlidingFragment extends MFragment implements ViewPager.OnPageChange
      */
     public void replaceResDianCounts(int position, String text) {
         if (TextUtils.isEmpty(text)) {
-            LinearLayout.LayoutParams mLayoutParam = new LinearLayout.LayoutParams((int) getResources().getDimension(R.dimen.j10dp), (int) getResources().getDimension(R.dimen.j10dp));
-            mLayoutParam.setMargins(0, 0, (int) getResources().getDimension(R.dimen.j17dp), 0);
+            LinearLayout.LayoutParams mLayoutParam = new LinearLayout.LayoutParams(F.dp2px(Frame.CONTEXT,10f), F.dp2px(Frame.CONTEXT,10f));
+            mLayoutParam.setMargins(0, 0,F.dp2px(Frame.CONTEXT,17f), 0);
             mLayoutParam.gravity = Gravity.CENTER;
             ((TextView) ((LinearLayout) mLinearLayout.getChildAt(position))
                     .getChildAt(0)).setLayoutParams(mLayoutParam);
         } else {
-            LinearLayout.LayoutParams mLayoutParam = new LinearLayout.LayoutParams((int) getResources().getDimension(R.dimen.j17dp), (int) getResources().getDimension(R.dimen.j17dp));
-            mLayoutParam.setMargins(0, 0, (int) getResources().getDimension(R.dimen.j5dp), 0);
+            LinearLayout.LayoutParams mLayoutParam = new LinearLayout.LayoutParams(F.dp2px(Frame.CONTEXT,17f),F.dp2px(Frame.CONTEXT,17f));
+            mLayoutParam.setMargins(0, 0, F.dp2px(Frame.CONTEXT,5f), 0);
             mLayoutParam.gravity = Gravity.CENTER;
             ((TextView) ((LinearLayout) mLinearLayout.getChildAt(position))
                     .getChildAt(0)).setLayoutParams(mLayoutParam);
