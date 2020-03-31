@@ -13,7 +13,7 @@
     <item android:id="@android:id/progress">
         <clip>
             <shape>
-                <corners android:radius="@dimen/j2dp" />
+                <corners android:radius="2dp" />
                 <gradient
                     android:centerColor="#4AEA2F"
                     android:endColor="#31CE15"
