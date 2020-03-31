@@ -3,6 +3,6 @@
     android:shape="rectangle">
     <!-- 填充的颜色 -->
     <solid android:color="@color/white" />
-    <corners android:radius="@dimen/dp_6" />
+    <corners android:radius="6dp" />
 </shape>
 
