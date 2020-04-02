@@ -14,10 +14,10 @@ import java.util.concurrent.TimeoutException
 
 
 class S(
-        var l: HttpResultSubscriberListener,
-        var mProgressDialog: Dialog,
-        var method: String,
-        var isShow: Boolean
+    var l: HttpResultSubscriberListener,
+    var mProgressDialog: Dialog,
+    var method: String,
+    var isShow: Boolean
 ) : DisposableObserver<Any>() {
 
 
@@ -29,8 +29,8 @@ class S(
         var code = -1000
         var msg: String? = e.message
         if (e is ConnectException
-                || e is SocketTimeoutException
-                || e is TimeoutException
+            || e is SocketTimeoutException
+            || e is TimeoutException
         ) {
             code = -9999
 //            msg = "network anomaly"
@@ -47,7 +47,7 @@ class S(
 
     override fun onNext(httpResult: Any) {
         Log.i(method, Gson().toJson(httpResult))
-        l.onSuccess(Gson().toJson(httpResult), method)
+        l.onNext(Gson().toJson(httpResult), method)
 //        if (httpResult.code.equals("1111")) {
 //            try {
 //                l.onSuccess(Gson().toJson(httpResult.data), method)
