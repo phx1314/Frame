@@ -46,8 +46,8 @@ class S(
     }
 
     override fun onNext(httpResult: Any) {
-        AbLogUtil.d(httpResult.toString())
-        l.onSuccess(httpResult, method)
+        Log.i(method, Gson().toJson(httpResult))
+        l.onSuccess(Gson().toJson(httpResult), method)
 //        if (httpResult.code.equals("1111")) {
 //            try {
 //                l.onSuccess(Gson().toJson(httpResult.data), method)
