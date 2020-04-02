@@ -13,12 +13,12 @@ import java.net.SocketTimeoutException
 import java.util.concurrent.TimeoutException
 
 
-class S<T>(
+class S(
         var l: HttpResultSubscriberListener,
         var mProgressDialog: Dialog,
         var method: String,
         var isShow: Boolean
-) : DisposableObserver<HttpResult<T>>() {
+) : DisposableObserver<Any>() {
 
 
     override fun onComplete() {
@@ -45,17 +45,19 @@ class S<T>(
         l.onError(code.toString(), e.message, "", "")
     }
 
-    override fun onNext(httpResult: HttpResult<T>) {
+    override fun onNext(httpResult: Any) {
         AbLogUtil.d(httpResult.toString())
-        if (httpResult.code.equals("1111")) {
-            try {
-                l.onSuccess(Gson().toJson(httpResult.data), method)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        } else {
-            l.onError(httpResult.code, httpResult.msg, Gson().toJson(httpResult.data), method)
-            Helper.toast(httpResult.msg)
-        }
+        l.onNext(httpResult)
+//        if (httpResult.code.equals("1111")) {
+//            try {
+//                l.onSuccess(Gson().toJson(httpResult.data), method)
+//                Log.i(method, Gson().toJson(httpResult.data))
+//            } catch (e: Exception) {
+//                e.printStackTrace()
+//            }
+//        } else {
+//            l.onError(httpResult.code, httpResult.msg, Gson().toJson(httpResult.data), method)
+//            Helper.toast(httpResult.msg)
+//        }
     }
 }
