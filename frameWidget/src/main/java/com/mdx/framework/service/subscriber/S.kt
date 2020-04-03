@@ -46,8 +46,8 @@ class S(
     }
 
     override fun onNext(httpResult: Any) {
-        Log.i(method, Gson().toJson(httpResult))
-        l.onNext(Gson().toJson(httpResult), method)
+        Log.i(method, httpResult.toString())
+        l.onNext(httpResult, method)
 //        if (httpResult.code.equals("1111")) {
 //            try {
 //                l.onSuccess(Gson().toJson(httpResult.data), method)
