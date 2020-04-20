@@ -1,11 +1,8 @@
 package com.mdx.framework.service.subscriber
 
 import android.app.Dialog
-import android.app.ProgressDialog
 import android.util.Log
-import com.google.gson.Gson
 import com.mdx.framework.service.exception.HttpResultException
-import com.mdx.framework.utility.AbLogUtil
 import com.mdx.framework.utility.Helper
 import io.reactivex.observers.DisposableObserver
 import java.net.ConnectException
@@ -27,17 +24,14 @@ class S(
 
     override fun onError(e: Throwable) {
         var code = -1000
-        var msg: String? = e.message
+        var msg: String?
         if (e is ConnectException
             || e is SocketTimeoutException
             || e is TimeoutException
         ) {
             code = -9999
-//            msg = "network anomaly"
-
         } else if (e is HttpResultException) {
             code = e.code
-//            msg = e.msg
         }
         msg = "请求服务器失败"
         Helper.toast(msg)
