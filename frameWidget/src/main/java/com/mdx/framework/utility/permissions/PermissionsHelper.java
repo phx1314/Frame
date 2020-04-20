@@ -7,7 +7,7 @@ package com.mdx.framework.utility.permissions;//
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Build.VERSION;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 
 import com.mdx.framework.Frame;
 

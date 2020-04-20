@@ -1,7 +1,7 @@
 package com.mdx.framework.zxing;
 
 import android.hardware.Camera;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 
 public class CameraWrapper {

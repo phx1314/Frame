@@ -5,8 +5,8 @@
 
 package com.mdx.framework.widget.viewpagerindicator;
 
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 
 public interface PageIndicator extends OnPageChangeListener {
     void setViewPager(ViewPager var1);
