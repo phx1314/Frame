@@ -6,11 +6,12 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
 
-fun <T> gB(clazz: Class<T>, baseUrl: String, token: String?, TIME: Long): T =
-        ServiceFactory.createRxRetrofitService(clazz, baseUrl, token, TIME)
+fun <T> gB(clazz: Class<T>, baseUrl: String, token: String?, TIME: Long, isSpecial: Boolean = false): T =
+        ServiceFactory.createRxRetrofitService(clazz, baseUrl, token, TIME, isSpecial)
 
 class ServiceFactory {
     companion object {
@@ -40,26 +41,16 @@ class ServiceFactory {
                 clazz: Class<T>,
                 endPoint: String,
                 token: String?,
-                TIME: Long
+                TIME: Long, isSpecial: Boolean
         ): T {
             val retrofit = Retrofit.Builder()
                     .baseUrl(endPoint)
                     .client(getOkHttpClient(token, TIME))
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(if (isSpecial) ScalarsConverterFactory.create() else GsonConverterFactory.create())
                     .build()
 
             return retrofit.create(clazz)
-        }
-
-        fun <T> createRetrofitService(clazz: Class<T>, endPoint: String): T {
-            return Retrofit
-                    .Builder()
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl(endPoint)
-                    .build()
-                    .create(clazz)
-
         }
 
     }
