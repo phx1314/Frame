@@ -104,6 +104,7 @@ public class F {
     }
 
     public static String toPinYin(char hanzi) {
+
         HanyuPinyinOutputFormat hanyuPinyin = new HanyuPinyinOutputFormat();
         hanyuPinyin.setCaseType(HanyuPinyinCaseType.LOWERCASE);
         hanyuPinyin.setToneType(HanyuPinyinToneType.WITH_TONE_MARK);
