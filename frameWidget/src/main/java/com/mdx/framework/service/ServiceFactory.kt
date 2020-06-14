@@ -26,7 +26,6 @@ class ServiceFactory {
                     .connectTimeout(TIME, TimeUnit.SECONDS)
                     .readTimeout(TIME, TimeUnit.SECONDS)
                     .writeTimeout(TIME, TimeUnit.SECONDS)
-                    .addNetworkInterceptor(loggingInterceptor)
                     .build() else OkHttpClient.Builder()
                     .addInterceptor {
                         AbLogUtil.d(it.request().body.toString())
