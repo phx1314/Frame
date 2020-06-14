@@ -10,7 +10,7 @@ import java.net.SocketTimeoutException
 import java.util.concurrent.TimeoutException
 
 
-class S(
+open class S(
     var l: HttpResultSubscriberListener,
     var mProgressDialog: Dialog,
     var method: String,
