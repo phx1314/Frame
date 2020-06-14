@@ -21,7 +21,12 @@ class ServiceFactory {
                 AbLogUtil.d(it)
             })
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-            return OkHttpClient.Builder()
+            return if (TIME >= 1000) OkHttpClient.Builder()
+                    .connectTimeout(TIME, TimeUnit.SECONDS)
+                    .readTimeout(TIME, TimeUnit.SECONDS)
+                    .writeTimeout(TIME, TimeUnit.SECONDS)
+                    .addNetworkInterceptor(loggingInterceptor)
+                    .build() else OkHttpClient.Builder()
                     .addInterceptor {
                         AbLogUtil.d(it.request().body.toString())
                         val request = it.request().newBuilder()
