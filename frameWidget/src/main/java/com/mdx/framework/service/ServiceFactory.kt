@@ -20,6 +20,7 @@ class ServiceFactory {
             val loggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
                 AbLogUtil.d(it)
             })
+
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             return if (TIME >= 1000) OkHttpClient.Builder()
                     .connectTimeout(TIME, TimeUnit.SECONDS)
