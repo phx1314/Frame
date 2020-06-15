@@ -15,4 +15,9 @@ public class ModelDx implements Serializable {
         this.string = string;
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return string;
+    }
 }
