@@ -11,10 +11,10 @@ import java.util.concurrent.TimeoutException
 
 
 open class S(
-    var l: HttpResultSubscriberListener,
-    var mProgressDialog: Dialog,
-    var method: String,
-    var isShow: Boolean
+        var l: HttpResultSubscriberListener,
+        var mProgressDialog: Dialog,
+        var method: String,
+        var isShow: Boolean
 ) : DisposableObserver<Any>() {
 
 
@@ -26,15 +26,15 @@ open class S(
         var code = -1000
         var msg: String?
         if (e is ConnectException
-            || e is SocketTimeoutException
-            || e is TimeoutException
+                || e is SocketTimeoutException
+                || e is TimeoutException
         ) {
             code = -9999
         } else if (e is HttpResultException) {
             code = e.code
         }
         msg = "请求服务器失败"
-        Helper.toast(msg)
+        if (isShow) Helper.toast(msg)
         e.printStackTrace()
         l.onError(code.toString(), e.message, "", "")
     }

@@ -1,6 +1,7 @@
 package com.mdx.framework.service
 
 import com.mdx.framework.utility.AbLogUtil
+import okhttp3.ConnectionPool
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
@@ -23,7 +24,7 @@ class ServiceFactory {
 
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             return if (TIME >= 1000) OkHttpClient.Builder()
-                    .connectTimeout(TIME, TimeUnit.SECONDS)
+                    .connectTimeout(TIME, TimeUnit.SECONDS).connectionPool(ConnectionPool(5, 10, TimeUnit.SECONDS))
                     .readTimeout(TIME, TimeUnit.SECONDS)
                     .writeTimeout(TIME, TimeUnit.SECONDS)
                     .build() else OkHttpClient.Builder()
@@ -36,7 +37,7 @@ class ServiceFactory {
                                 .build()
                         it.proceed(request)
                     }
-                    .connectTimeout(TIME, TimeUnit.SECONDS)
+                    .connectTimeout(TIME, TimeUnit.SECONDS).connectionPool(ConnectionPool(5, 10, TimeUnit.SECONDS))
                     .readTimeout(TIME, TimeUnit.SECONDS)
                     .writeTimeout(TIME, TimeUnit.SECONDS)
                     .addNetworkInterceptor(loggingInterceptor)
