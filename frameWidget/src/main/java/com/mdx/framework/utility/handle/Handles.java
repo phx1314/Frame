@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Handles {
-    private ArrayList<MHandler> HANDLES = new ArrayList();
+    public ArrayList<MHandler> HANDLES = new ArrayList();
     public Bitmap[][] MenuIcon;
     public String[] RadioListImg = new String[0];
 
