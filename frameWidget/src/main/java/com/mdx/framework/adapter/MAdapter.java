@@ -26,7 +26,8 @@ public abstract class MAdapter<T> extends MBaseAdapter {
     public MAdapter(Context context, List<T> list, int Resoure) {
         this.context = context;
         this.layoutInflater = LayoutInflater.from(this.context);
-        this.list.addAll(list);
+        if (list != null)
+            this.list.addAll(list);
         this.resoure = Resoure;
     }
 
@@ -93,7 +94,8 @@ public abstract class MAdapter<T> extends MBaseAdapter {
     public MAdapter(Context context, List<T> list) {
         this.context = context;
         this.layoutInflater = LayoutInflater.from(this.context);
-        this.list.addAll(list);
+        if (list != null)
+            this.list.addAll(list);
     }
 
     public int getCount() {

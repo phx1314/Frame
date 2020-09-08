@@ -108,7 +108,7 @@ public abstract class MFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        super.onViewCreated(view, savedInstanceState);//Kotlin 直接使用id应该在这边操作，不能再onCreateView中获取，这与view的初始化时机有关系;资源文件也必须在这边获取
         initV(view);
     }
 
