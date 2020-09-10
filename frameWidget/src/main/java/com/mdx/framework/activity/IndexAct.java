@@ -12,7 +12,7 @@ import com.mdx.framework.Frame;
 import com.mdx.framework.utility.Helper;
 
 
-public class IndexAct extends  BaseActivity {
+public class IndexAct extends BaseActivity {
     private long exitTime = 0L;
 
     public IndexAct() {
@@ -27,9 +27,10 @@ public class IndexAct extends  BaseActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == 4 && event.getAction() == 0) {
             if (System.currentTimeMillis() - this.exitTime > 2000L) {
-                Helper.toast("再按一次退出程序!" );
+                Helper.toast("再按一次退出程序!");
                 this.exitTime = System.currentTimeMillis();
             } else {
+                System.exit(0);
                 Frame.finish();
             }
 
