@@ -30,8 +30,8 @@ public class IndexAct extends BaseActivity {
                 Helper.toast("再按一次退出程序!");
                 this.exitTime = System.currentTimeMillis();
             } else {
-                System.exit(0);
                 Frame.finish();
+                System.exit(0);
             }
 
             return true;
