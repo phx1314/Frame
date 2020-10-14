@@ -23,8 +23,10 @@ class ServiceFactory {
             })
 
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+
+            //为解决网络请求时间大于60秒时加入Interceptor的时候可能出现的网络请求错误， （拍档项目上传大文件）
             return if (TIME >= 1000) OkHttpClient.Builder()
-                    .connectTimeout(TIME, TimeUnit.SECONDS).connectionPool(ConnectionPool(5, 10, TimeUnit.SECONDS))
+                    .connectTimeout(TIME, TimeUnit.SECONDS).connectionPool(ConnectionPool(5, 10, TimeUnit.SECONDS))//解决http请求频繁时出现的bug
                     .readTimeout(TIME, TimeUnit.SECONDS)
                     .writeTimeout(TIME, TimeUnit.SECONDS)
                     .build() else OkHttpClient.Builder()

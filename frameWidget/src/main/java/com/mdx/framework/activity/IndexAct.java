@@ -31,6 +31,7 @@ public class IndexAct extends BaseActivity {
                 this.exitTime = System.currentTimeMillis();
             } else {
                 Frame.finish();
+//                System.exit(0);
             }
             return true;
         } else {
