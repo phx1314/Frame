@@ -8,12 +8,15 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.widget.LinearLayout;
 
 
@@ -93,7 +96,7 @@ public abstract class BaseActivity extends FragmentActivity {
             Class cls = Class.forName(classname);
             final Object e = cls.newInstance();
             if (e instanceof MFragment) {
-                final MFragment obj = (MFragment)e;
+                final MFragment obj = (MFragment) e;
                 obj.addOnFragmentCreateListener(new MFragment.OnFragmentCreateListener() {
                     public void onFragmentCreateListener(MFragment mFragment) {
                         obj.setActionBar(mActionBar);
@@ -185,6 +188,17 @@ public abstract class BaseActivity extends FragmentActivity {
         }
 
         return super.onKeyShortcut(keyCode, event);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (this.mFragment != null && this.mFragment instanceof MFragment) {
+            MFragment obj = (MFragment) this.mFragment;
+            if (obj.dispatchTouchEvent(ev)) {
+                return true;
+            }
+        }
+        return super.dispatchTouchEvent(ev);
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {

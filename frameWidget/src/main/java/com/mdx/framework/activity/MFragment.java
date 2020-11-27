@@ -7,13 +7,16 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Message;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
+
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -251,6 +254,10 @@ public abstract class MFragment extends Fragment {
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        return false;
+    }
+
+    public boolean dispatchTouchEvent(MotionEvent ev) {
         return false;
     }
 
